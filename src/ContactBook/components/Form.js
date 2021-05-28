@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { contactBookContext } from "../../ContactBookContext";
 import classes from "../contactBook.module.css";
-function Form(props) {
-  const { contactList, setContactList } = props;
+function Form() {
+  const { createContact } = useContext(contactBookContext);
   const [number, setNumber] = useState("");
   const [fullName, setFullname] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    setContactList([...contactList, { number, fullName }]);
+    const data = {
+      fullName,
+      number,
+    };
+    createContact(data);
     setNumber("");
     setFullname("");
   };

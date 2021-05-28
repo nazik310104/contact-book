@@ -1,26 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "../contactBook.module.css";
+import { contactBookContext } from "../../ContactBookContext";
 
 export default function ContactEdit(props) {
-  const {
-    currentFullName,
-    currentNumber,
-    contactList,
-    setContactList,
-    index,
-    setEditingContact,
-  } = props;
+  const { fullName: contactFullName, id, number: contactNumber } = props.data;
 
-  const [fullName, setFullname] = useState(currentFullName);
-  const [number, setNumber] = useState(currentNumber);
+  const [fullName, setFullname] = useState(contactFullName);
+  const [number, setNumber] = useState(contactNumber);
+  const { changeContact } = useContext(contactBookContext);
   const handleEdit = (e) => {
     e.preventDefault();
-    setContactList(
-      contactList.map((contact, i) =>
-        i === index ? { ...contact, fullName, number } : contact
-      )
-    );
-    setEditingContact(null);
+
+    changeContact(id, fullName, number);
   };
 
   return (

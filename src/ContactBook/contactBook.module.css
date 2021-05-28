@@ -4,11 +4,13 @@
   width: 80%;
   padding: 30px 20px;
   border-radius: 20px;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
+  background-image: linear-gradient(
+    to left top,
+    #25032c,
+    #003b77,
+    #0077b0,
+    #00b3bd,
+    #1aeba2
   );
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
@@ -33,7 +35,7 @@
 
 .formWrapper input:focus {
   outline: none;
-  border: 3px solid #f98404;
+  border: 3px solid #5bf8af;
 }
 
 .formWrapper button {
@@ -45,7 +47,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
-  background-color: #f98404;
+  background-color: #5bf8af;
   box-shadow: none;
   transition: box-shadow 1s;
 }
@@ -63,11 +65,13 @@
 .contactList div {
   width: 100%;
   height: 40%;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
+  background-image: linear-gradient(
+    to left top,
+    #25032c,
+    #003b77,
+    #0077b0,
+    #00b3bd,
+    #1aeba2
   );
   border: 1px solid #fff;
   border-radius: 20px;
@@ -116,11 +120,13 @@
 
 .editingContact form {
   width: 100%;
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    0deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
+  background-image: linear-gradient(
+    to left top,
+    #25032c,
+    #003b77,
+    #0077b0,
+    #00b3bd,
+    #1aeba2
   );
   border-radius: 20px;
 }
@@ -139,7 +145,7 @@
 
 .editingContact button {
   width: 100px;
-  background-color: #f98404;
+  background-color: #5bf8af;
   color: #fff;
   margin-left: 10px;
 }

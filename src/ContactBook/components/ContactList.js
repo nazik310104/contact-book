@@ -1,38 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ContactEdit from "./ContactEdit";
 import ContactItem from "./ContactItem";
 
 import classes from "../contactBook.module.css";
+import { contactBookContext } from "../../ContactBookContext";
 
 function ContactList(props) {
-  const { contactList, setContactList } = props;
-  const [editingContact, setEditingContact] = useState(null);
-  const removeContact = (index) => {
-    setContactList(contactList.filter((_, i) => i !== index));
-  };
-  const handleEditClick = (index) => {
-    setEditingContact(index);
-  };
+  const { contactList, fetchContacts, editId } = useContext(contactBookContext);
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
   return (
     <ul className={classes.contactList}>
-      {contactList.map((contact, index) =>
-        index === editingContact ? (
-          <ContactEdit
-            currentFullName={contact.fullName}
-            currentNumber={contact.number}
-            contactList={contactList}
-            setContactList={setContactList}
-            index={index}
-            setEditingContact={setEditingContact}
-          />
+      {contactList.map((contact) =>
+        contact.id === editId ? (
+          <ContactEdit data={contact} key={`${contact.id}-edit`} />
         ) : (
-          <ContactItem
-            contact={contact}
-            index={index}
-            removeContact={removeContact}
-            handleEditClick={handleEditClick}
-          />
+          <ContactItem data={contact} key={contact.id} />
         )
       )}
     </ul>

@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import editImg from "../icons/pencil.svg";
 import cancelImg from "../icons/cancel (2).svg";
 import classes from "../contactBook.module.css";
+import { contactBookContext } from "../../ContactBookContext";
 
 export default function ContactItem(props) {
-  const { contact, index, removeContact, handleEditClick } = props;
+  const { fullName, number, id } = props.data;
+  const { deleteContact, changeEditId } = useContext(contactBookContext);
+
+  const handleDelete = () => {
+    // showAlert();
+    deleteContact(id);
+  };
 
   return (
-    <div style={{ flexDirection: "column" }} key={index}>
-      <h1>{contact.fullName}</h1>
-      <p>{contact.number}</p>
+    <div style={{ flexDirection: "column" }} key={`${id}-contact`}>
+      <h1>{fullName}</h1>
+      <p>{number}</p>
       <img
         className={classes.cancelIcon}
         src={cancelImg}
-        onClick={() => removeContact(index)}
+        onClick={handleDelete}
         alt="delete"
       />
       <img
-        onClick={() => handleEditClick(index)}
+        onClick={() => changeEditId(id)}
         className={classes.editIcon}
         src={editImg}
         alt="edit-img"
